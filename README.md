@@ -9,8 +9,7 @@ const getImages = (query) => {
 }
 
 #### Error-02: Slider Creation
- <input class="form-control" id="duration" placeholder="slider change duration"><br>
- - In index.html file fixing the id 'doration' to 'duration'
+ - In index.html file fixing the id 'doration' to 'duration' <br>
 
  #### Error-03: Duration Time Must Not Be Negative
  const positiveDuration = Math.abs(duration); // Convert a negative value into a positive value;<br>

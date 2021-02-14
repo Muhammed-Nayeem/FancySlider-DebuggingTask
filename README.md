@@ -14,4 +14,6 @@
 #### Error-05: Image Selection
 - Solved; <br>
 
+#### Feature-01: Added Empty Search Fields Warning;
+
 #### Live-Demo: https://muhammed-nayeem.github.io/FancySlider-DebuggingTask/index.html

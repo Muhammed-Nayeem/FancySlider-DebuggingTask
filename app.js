@@ -3,7 +3,6 @@ const imagesArea = document.querySelector(".images");
 const gallery = document.querySelector(".gallery");
 const galleryHeader = document.querySelector(".gallery-header");
 const searchBtn = document.getElementById("search-btn");
-const searchText = document.getElementById("search");
 const sliderBtn = document.getElementById("create-slider");
 const sliderContainer = document.getElementById("sliders");
 
@@ -34,7 +33,7 @@ const getImages = (query) => {
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then((response) => response.json())
     .then((data) => showImages(data.hits)) //Solved
-    .catch((err) => console.log(err));
+    .catch((err) => displayError('Your entire data is not found. Please try again!'))
 };
 
 //Select Images Work:
@@ -120,7 +119,7 @@ const changeSlide = (index) => {
 };
 
 // Search by Enter key press:
-searchText.addEventListener("keypress", function (event) {
+document.getElementById("search").addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     searchBtn.click();
   }
@@ -134,13 +133,25 @@ document.getElementById("duration").addEventListener("keypress", function (event
 //Search Button Works:
 searchBtn.addEventListener("click", function () {
   const search = document.getElementById("search");
-  document.querySelector(".main").style.display = "none";
-  clearInterval(timer);
-  getImages(search.value);
-  sliders.length = 0;
+    if (search.value === "") {
+      displayError('Your entire data is not found. Please try again.');
+      gallery.innerHTML = "";
+    } else {
+      document.querySelector(".main").style.display = "none";
+      clearInterval(timer);
+      getImages(search.value);
+      sliders.length = 0;
+      displayError("");
+    }
 });
 
 //Slider Button Works:
 sliderBtn.addEventListener("click", function () {
   createSlider();
 });
+
+//Display Empty Error Message:
+const displayError = error => {
+const emptyError = document.getElementById("error-tag");
+emptyError.innerText = error;
+};

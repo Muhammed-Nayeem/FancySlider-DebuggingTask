@@ -14,6 +14,14 @@ let sliders = [];
 // to create your own api key
 const KEY = "15674931-a9d714b6e9d654524df198e00&q";
 
+//API Fetching and Data Loading:
+const getImages = (query) => {
+  fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
+    .then((response) => response.json())
+    .then((data) => showImages(data.hits)) //Solved
+    .catch((err) => displayError('Your entire data is not found. Please try again!'))
+};
+
 // show images
 const showImages = (images) => {
   imagesArea.style.display = "block";
@@ -26,14 +34,6 @@ const showImages = (images) => {
     div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
     gallery.appendChild(div);
   });
-};
-
-//API Fetching and Data Loading:
-const getImages = (query) => {
-  fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
-    .then((response) => response.json())
-    .then((data) => showImages(data.hits)) //Solved
-    .catch((err) => displayError('Your entire data is not found. Please try again!'))
 };
 
 //Select Images Work:

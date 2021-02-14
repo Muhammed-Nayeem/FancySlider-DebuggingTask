@@ -2,11 +2,12 @@ const imagesArea = document.querySelector('.images');
 const gallery = document.querySelector('.gallery');
 const galleryHeader = document.querySelector('.gallery-header');
 const searchBtn = document.getElementById('search-btn');
+const searchText = document.getElementById('search');
 const sliderBtn = document.getElementById('create-slider');
 const sliderContainer = document.getElementById('sliders');
+
 // selected image 
 let sliders = [];
-
 
 // If this key doesn't work
 // Find the name in the url and go to their website
@@ -109,6 +110,18 @@ const changeSlide = (index) => {
 
   items[index].style.display = "block"
 }
+
+// Search by Enter key press:
+searchText.addEventListener("keypress", function(event) {
+    if (event.key === 'Enter') {
+     searchBtn.click();
+    }
+});
+document.getElementById('duration').addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+    sliderBtn.click();
+  }
+});
 
 searchBtn.addEventListener('click', function () {
   document.querySelector('.main').style.display = 'none';

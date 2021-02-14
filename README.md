@@ -14,5 +14,7 @@ const getImages = (query) => {
  #### Error-03: Duration Time Must Not Be Negative
  const positiveDuration = Math.abs(duration); // Convert a negative value into a positive value;<br>
 
+#### Feature-01: Enter KeyPress Worked
+- Using 'keypress() and click()' method.
 
- #### Live-Demo: https://muhammed-nayeem.github.io/FancySlider-DebuggingTask/index.html
+#### Live-Demo: https://muhammed-nayeem.github.io/FancySlider-DebuggingTask/index.html
